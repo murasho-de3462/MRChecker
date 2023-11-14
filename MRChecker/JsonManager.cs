@@ -123,6 +123,10 @@ namespace JsonFileIO.Jsons
 
         public static void ReadMRJson(List<MRJson> mrJsons)
 		{
+			if (!File.Exists(JSON_PATH))
+			{
+                WriteMRJson(m_mrJsonData);
+			}
             using(var sr = new StreamReader(JSON_PATH, System.Text.Encoding.UTF8))
 			{
                 var readData = sr.ReadToEnd();
